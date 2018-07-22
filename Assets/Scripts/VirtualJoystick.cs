@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
 
+    float localX;
+    float localY;
     private Image bgImg;
     private Image jsImg;
     private Vector3 inputVector;
@@ -22,41 +24,18 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
         Vector2 pos;
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(bgImg.rectTransform, ped.position, ped.pressEventCamera, out pos))
         {
+
             pos.x = (pos.x / bgImg.rectTransform.sizeDelta.x);
             pos.y = (pos.y / bgImg.rectTransform.sizeDelta.y);
+
+            localX = pos.x;
+            localY = pos.y;
 
             inputVector = new Vector3(pos.x * 2, pos.y * 2, 0);
             inputVector = (inputVector.magnitude > 1.0f) ? inputVector.normalized : inputVector;
 
             jsImg.rectTransform.anchoredPosition = new Vector3(inputVector.x * bgImg.rectTransform.sizeDelta.x / 2,
                 inputVector.y * bgImg.rectTransform.sizeDelta.x / 2, 0);
-        }
-    }
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            inputVector.y = 1;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            inputVector.y = -1;
-        }
-        else
-        {
-            inputVector.y = 0;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            inputVector.x = -1;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            inputVector.x = 1;
-        }
-        else
-        {
-            inputVector.x = 0;
         }
     }
 
