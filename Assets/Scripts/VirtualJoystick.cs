@@ -32,6 +32,33 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
                 inputVector.y * bgImg.rectTransform.sizeDelta.x / 2, 0);
         }
     }
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            inputVector.y = 1;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            inputVector.y = -1;
+        }
+        else
+        {
+            inputVector.y = 0;
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            inputVector.x = -1;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            inputVector.x = 1;
+        }
+        else
+        {
+            inputVector.x = 0;
+        }
+    }
 
     public virtual void OnPointerDown(PointerEventData ped)
     {
@@ -49,7 +76,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
         return inputVector.x;
     }
 
-    public float Veriticle()
+    public float Vertical()
     {
         return inputVector.y;
     }
