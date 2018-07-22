@@ -160,13 +160,13 @@ MonoBehaviour:
   StaggerIndex: 0
   HexSideLength: 0
   NumLayers: 1
-  NumTilesWide: 10
-  NumTilesHigh: 10
+  NumTilesWide: 100
+  NumTilesHigh: 100
   TileWidth: 32
   TileHeight: 32
   ExportScale: 1
-  MapWidthInPixels: 320
-  MapHeightInPixels: 320
+  MapWidthInPixels: 3200
+  MapHeightInPixels: 3200
   BackgroundColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
 --- !u!114 &114362776936031530
 MonoBehaviour:
